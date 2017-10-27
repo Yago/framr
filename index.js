@@ -66,8 +66,10 @@ const executioner = (command) => {
 
 const framr = async () => {
   spinner.start();
+  let dir = argv._[0] ? path.resolve(argv._[0]) : path.resolve('.');
+  const isDir = fs.lstatSync(dir).isDirectory();
+  if (!isDir) dir = dir.split('/').slice(0, -1).join('/');
 
-  const dir = argv._[0] ? path.resolve(argv._[0]) : path.resolve('.');
   const pictures = await fs.readdirSync(dir);
 
   // Create output directory
