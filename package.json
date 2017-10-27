@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Add frames to your images",
   "main": "index.js",
+  "bin": {
+    "framr": "index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +18,12 @@
   "bugs": {
     "url": "https://github.com/Yago/framr/issues"
   },
-  "homepage": "https://github.com/Yago/framr#readme"
+  "homepage": "https://github.com/Yago/framr#readme",
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "cli-spinner": "^0.2.7",
+    "fs-extra": "^4.0.2",
+    "image-size": "^0.6.1",
+    "yargs": "^10.0.3"
+  }
 }
