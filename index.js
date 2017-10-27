@@ -52,7 +52,7 @@ const argv = require('yargs')
     },
   })
   .example("$0 .", 'Frame all image in the current directory')
-  .example("$0 ./subdirectory/ -w 2000 -h 2000 -c '#ff0'", 'Frame your images')
+  .example("$0 ./subdirectory/ -w 2000 -h 2000 -c '#ff0'", 'Frame your images in a 2000X2000 yellow square')
   .argv;
 
 const executioner = (command) => {
