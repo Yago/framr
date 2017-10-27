@@ -65,13 +65,16 @@ const executioner = (command) => {
 };
 
 const framr = async () => {
-  const dir = argv._[0] ? path.resolve(argv._[0]) : '.';
+  spinner.start();
+
+  const dir = argv._[0] ? path.resolve(argv._[0]) : path.resolve('.');
   const pictures = await fs.readdirSync(dir);
 
   // Create output directory
   await fs.ensureDirSync(path.join(dir, argv.target));
 
   // Iterate over each images
+  let i = 0;
   pictures.forEach(async (item) => {
     const picture = path.join(dir, item);
     const isSupported = supported.includes(path.extname(picture).toLocaleLowerCase());
@@ -89,6 +92,13 @@ const framr = async () => {
       const frame = isLandscape ? frameLandscape : framePortrait;
 
       await executioner(`magick ${picture} -resize ${argv.width - argv.size}x${argv.height - argv.size} -mattecolor "${argv.color}" -frame ${frame} ${path.join(dir, argv.target, item)}`);
+    }
+
+    i += 1;
+    if (i === pictures.length) {
+      spinner.stop(true);
+      console.log('🏞  All pictures successfully framed !');
+      console.log(`Check ${path.join(dir, argv.target)} to see the result.`);
     }
   });
 };
