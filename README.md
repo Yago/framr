@@ -18,6 +18,9 @@ or
 $ yarn global add framr
 ```
 
+#### [🎁 Install also the Alfred workflow !](./assets/framr.alfredworkflow)
+*\* cmd+option+ctrl+f on a folder*
+
 ## Usage
 
 ```bash
